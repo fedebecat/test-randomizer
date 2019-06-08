@@ -1,5 +1,6 @@
 from docx import Document
 import random
+from tqdm import tqdm
 
 filename = 'test.docx'
 num_copies = 10
@@ -28,7 +29,8 @@ for e, p in enumerate(paragraphs):
 doc = Document()
 doc.sections[0].header.paragraphs[0].text = header_text
 
-for copy in range(num_copies):
+print('Generating copies...')
+for copy in tqdm(range(num_copies)):
     all_questions = list(questions.keys())
     if randomize_questions:
         random.shuffle(all_questions)
